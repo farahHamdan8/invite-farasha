@@ -1,0 +1,19 @@
+.wrap { display: block; will-change: transform; }
+.svg { display: block; overflow: visible; filter: drop-shadow(0 6px 5px rgba(74, 14, 23, 0.18)); }
+
+/* Wings pivot on the body line; only transform is animated. */
+.wing { transform-box: view-box; transform-origin: 100px 70px; }
+.flutter { animation: flutter 5.5s cubic-bezier(0.45, 0, 0.25, 1) infinite; }
+.excited { animation-duration: 0.55s; }
+
+@keyframes flutter {
+  0%, 58%, 100% { transform: scaleX(1); }
+  63% { transform: scaleX(0.58); }
+  68% { transform: scaleX(1); }
+  73% { transform: scaleX(0.72); }
+  80% { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flutter { animation: none; }
+}

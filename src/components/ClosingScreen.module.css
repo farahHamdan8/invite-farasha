@@ -1,0 +1,22 @@
+.section {
+  min-height: 100svh;
+  /* the cream paper melts into burgundy over the first quarter of the screen */
+  background: linear-gradient(180deg, var(--cream-100) 0, #b98a8c 9svh, var(--burgundy-700) 30svh, var(--burgundy-800) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 30svh 24px 12svh;
+  scroll-snap-align: start;
+}
+.names { display: grid; width: 100%; font-family: var(--font-cursive); line-height: .95; color: var(--rose); }
+.name { font-size: clamp(2.1rem, 9.5vw, 2.6rem); display: block; white-space: nowrap; }
+.first { justify-self: start; }
+.second { justify-self: end; margin-top: -.1em; }
+.amp { position: absolute; left: 50%; top: 50%; translate: -50% -50%; font-size: 2.6rem; color: color-mix(in srgb, var(--rose) 45%, transparent); }
+.sign {
+  margin-top: 7svh;
+  font-family: var(--font-heading); font-style: italic; font-weight: 300;
+  font-size: 1rem; letter-spacing: .3em; text-indent: .3em; color: var(--gold-soft);
+}
+
+:global(html[lang="ar"]) .name { font-size: clamp(1.9rem, 8.4vw, 2.3rem); line-height: 1.6; }
+:global(html[lang="ar"]) .amp { font-size: 1.8rem; }
+:global(html[lang="ar"]) .sign { font-family: var(--font-ar-script), serif; font-style: normal; font-size: 1.5rem; }

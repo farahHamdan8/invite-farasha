@@ -1,0 +1,158 @@
+.screen {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24svh 28px 8svh;
+  scroll-snap-align: start;
+  text-align: center;
+}
+.stack { display: flex; flex-direction: column; align-items: center; width: 100%; }
+
+.invited { display: flex; flex-direction: column; align-items: center; margin-top: 6svh; }
+.small {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.cordially {
+  margin: 0.15em 0 0.2em;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 9.6vw, 2.75rem);
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  text-transform: uppercase;
+  background: linear-gradient(100deg, #a98245 0%, #e9d6a6 28%, #c5a059 52%, #f3e6c4 74%, #b08a4c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.eyebrow {
+  margin-top: 5.5svh;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.72rem;
+  line-height: 1.9;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  /* margin-left: auto ;
+  margin-right: auto ;
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem; */
+
+}
+
+.names {
+  position: relative;
+  margin-top: 1.4svh;
+  display: grid;
+  width: min(100%, 300px);
+  font-family: var(--font-cursive);
+  color: #8b6f76;
+  line-height: 0.1;
+}
+.img {
+  @media (max-width: 600px) {
+    width: 280px;
+    height: auto;
+  }
+}
+.name { font-size: clamp(3.4rem, 10.5vw, 3.4rem); display: block; }
+.first { justify-self: start; transform-origin: left bottom; }
+.second { justify-self: end; margin-top: -0.12em; }
+.amp {
+  position: absolute; left: 50%; top: 50%;
+  translate: -50% -48%;
+  font-size: 3.4rem;
+  color: var(--rose);
+  opacity: .9;
+  pointer-events: none;
+}
+
+/* ---- screen two ---- */
+.details { gap: 0; }
+.saveDate {
+  font-family: var(--font-cursive);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 11vw, 3rem);
+  color: #a07f6c;
+  line-height: 1;
+}
+.date {
+  margin-top: 3.4svh;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 6.4vw, 1.65rem);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.time {
+  margin-top: 1.1rem;
+  font-weight: 400;
+  font-size: 0.74rem;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.venueBlock { margin-top: 5.5svh; display: flex; flex-direction: column; align-items: center; }
+.rule { width: 46px; height: 1px; background: var(--gold); margin-bottom: 2.6svh; }
+.venue {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.26em;
+  text-indent: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.address {
+  margin-top: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.links { margin-top: 6svh; display: flex; align-items: center; gap: 14px; }
+.link {
+  padding: 10px 4px;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gold);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s, color .3s;
+}
+.link:hover { border-color: currentColor; }
+.dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); }
+
+/* ---- Arabic optical adjustments: smaller x-height, so lift the small tiers ---- */
+:global(html[lang="ar"]) .small { font-size: 1.1rem; font-family: var(--font-ar-serif), serif; }
+:global(html[lang="ar"]) .cordially { font-family: var(--font-ar-script), serif; font-weight: 700; font-size: clamp(2.5rem, 11.5vw, 3.1rem); line-height: 1.5; margin: 0; }
+:global(html[lang="ar"]) .eyebrow { font-family: var(--font-ar-serif), serif; font-size: 1.15rem; line-height: 2; margin-top: 4svh; }
+:global(html[lang="ar"]) .name { line-height: 1.5; }
+:global(html[lang="ar"]) .amp { font-size: 2.6rem; }
+:global(html[lang="ar"]) .saveDate { font-size: clamp(2.2rem, 10vw, 2.7rem); line-height: 1.5; font-weight: 700; }
+:global(html[lang="ar"]) .date { font-size: 1.7rem; font-weight: 700; }
+:global(html[lang="ar"]) .time, :global(html[lang="ar"]) .address { font-size: 1rem; }
+:global(html[lang="ar"]) .venue { font-size: 1.6rem; font-weight: 700; }
+:global(html[lang="ar"]) .link { font-size: .95rem; }

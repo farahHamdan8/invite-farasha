@@ -1,0 +1,24 @@
+.panel {
+  width: 100%;
+  max-width: var(--panel-w);
+  margin-inline: auto;
+  min-height: 100svh;
+  background: var(--cream-100);
+  overflow-x: clip;
+}
+@media (min-width: 640px) {
+  .panel { box-shadow: 0 30px 80px rgba(74, 14, 23, .28), 0 0 0 1px rgba(74, 14, 23, .06); }
+}
+.paper {
+  position: relative;
+  padding-bottom: 12svh;
+  background:
+    radial-gradient(120% 60% at 50% 0%, #fff 0%, transparent 70%),
+    var(--cream-100);
+}
+.rail { position: sticky; top: 0; height: 0; z-index: 5; pointer-events: none; }
+.fade {
+  position: absolute; left: 0; right: 0; top: 0; height: 27svh;
+  background: linear-gradient(180deg, var(--cream-100) 76%, rgba(253, 251, 247, 0));
+}
+.perch { position: absolute; left: 0; right: 0; top: 7svh; display: flex; justify-content: center; }

@@ -1,0 +1,8 @@
+/* ---------- oval cartouche ---------- */
+.oval { position: relative; width: min(78vw, 340px); aspect-ratio: 3 / 4; will-change: transform, opacity; }
+.ovalSvg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ovalContent {
+  position: absolute; inset: 24% 20%;
+  display: grid; place-items: center;
+}
+

@@ -1,0 +1,106 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  margin-inline: auto;
+  width: min(100%, var(--panel-w));
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+.backing { position: absolute; inset: 0; background: var(--burgundy-700); }
+
+.flap {
+  position: absolute;
+  inset: 0;
+  background-color: var(--burgundy-700);
+  background-size: 180px 180px, 220px 220px, cover;
+  will-change: transform;
+}
+/* four triangles meeting in the centre — the "X" of the reference */
+.top    { clip-path: polygon(0 0, 100% 0, 50% 50%); }
+.bottom { clip-path: polygon(0 100%, 100% 100%, 50% 50%); }
+.left   { clip-path: polygon(0 0, 0 100%, 50% 50%); }
+.right  { clip-path: polygon(100% 0, 100% 100%, 50% 50%); }
+/* directional light so each plane of paper reads as a separate fold */
+.top::after, .bottom::after, .left::after, .right::after { content: ""; position: absolute; inset: 0; }
+.top::after    { background: linear-gradient(180deg, rgba(255,210,210,.10), rgba(0,0,0,.22)); }
+.bottom::after { background: linear-gradient(0deg, rgba(0,0,0,.34), rgba(0,0,0,.05)); }
+.left::after   { background: linear-gradient(90deg, rgba(0,0,0,.12), rgba(0,0,0,.30)); }
+.right::after  { background: linear-gradient(270deg, rgba(255,200,200,.10), rgba(0,0,0,.26)); }
+
+/* تم تعديل left إلى 50% لسنترة الفراشة تماماً في المنتصف */
+/* صندوق بحجم الشاشة كلها والفراشة في منتصفه تمامًا */
+.sealZone {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none; /* ليبقى السحب والتمرير يفتحان الدعوة */
+}
+
+.seal {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+  margin: 0; /* حذفت margin: -64px 0 0 -64px */
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: auto; /* الزر وحده يستقبل الضغط */
+  -webkit-tap-highlight-color: transparent;
+}
+.glow {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(253,251,247,.92), rgba(244,240,234,.55) 60%, transparent);
+}
+
+.pulse {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 207, 160, .7);
+  animation: pulse 2.8s cubic-bezier(.2,.6,.3,1) infinite;
+}
+
+.seal > :last-child { position: relative; }
+
+/* النص "اضغط للفتح" مسنتر تحت الفراشة مباشرة */
+.hint {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 86px);
+  transform: translateX(-50%);
+  width: max-content;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+
+/* تأثير النبض المتصاعد نحو الأعلى بحركة طيران خفيفة */
+@keyframes pulse {
+  0% { 
+    transform: scale(.8) translateY(0); 
+    opacity: .9; 
+  }
+  100% { 
+    transform: scale(1.6) translateY(-25px); 
+    opacity: 0; 
+  }
+}
+
+@media (prefers-reduced-motion: reduce) { 
+  .pulse { animation: none; opacity: 0; } 
+}
